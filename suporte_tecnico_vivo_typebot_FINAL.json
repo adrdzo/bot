@@ -1,0 +1,327 @@
+{
+  "version": "6.1",
+  "theme": {
+    "colors": {
+      "background": "#ffffff",
+      "text": "#000000",
+      "primary": "#007AFF"
+    },
+    "font": "Inter"
+  },
+  "settings": {
+    "language": "pt-BR",
+    "allowRestart": true,
+    "persistVariables": true,
+    "messages": {
+      "restartConfirmation": "Você quer reiniciar o atendimento?",
+      "restartButton": "Reiniciar"
+    }
+  },
+  "events": [],
+  "groups": [],
+  "variables": [],
+  "edges": [
+    {
+      "id": "edge-start-to-internet_lenta",
+      "from": {
+        "nodeId": "start",
+        "blockId": "choice1"
+      },
+      "to": {
+        "nodeId": "internet_lenta"
+      }
+    },
+    {
+      "id": "edge-start-to-trocar_senha",
+      "from": {
+        "nodeId": "start",
+        "blockId": "choice2"
+      },
+      "to": {
+        "nodeId": "trocar_senha"
+      }
+    },
+    {
+      "id": "edge-start-to-internet_cai",
+      "from": {
+        "nodeId": "start",
+        "blockId": "choice3"
+      },
+      "to": {
+        "nodeId": "internet_cai"
+      }
+    },
+    {
+      "id": "edge-start-to-luz_vermelha",
+      "from": {
+        "nodeId": "start",
+        "blockId": "choice4"
+      },
+      "to": {
+        "nodeId": "luz_vermelha"
+      }
+    },
+    {
+      "id": "edge-start-to-transferencia",
+      "from": {
+        "nodeId": "start",
+        "blockId": "choice5"
+      },
+      "to": {
+        "nodeId": "transferencia"
+      }
+    }
+  ],
+  "flows": [
+    {
+      "id": "main",
+      "name": "Main",
+      "startNodeId": "start",
+      "nodes": [
+        {
+          "id": "start",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Olá! 👋 Aqui é o ",
+                    "bold": true
+                  },
+                  {
+                    "text": "Suporte Técnico da Vivo",
+                    "bold": true,
+                    "color": "#007AFF"
+                  },
+                  {
+                    "text": ".\nVocê está falando com o atendimento rápido para clientes com até ",
+                    "bold": true
+                  },
+                  {
+                    "text": "15 dias da instalação da internet",
+                    "bold": true,
+                    "underline": true
+                  },
+                  {
+                    "text": ".\n\nEscolha uma opção abaixo:",
+                    "bold": true
+                  }
+                ]
+              }
+            ]
+          },
+          "options": {
+            "isMultipleChoice": false,
+            "buttonType": "inline",
+            "inputs": [
+              {
+                "id": "choice1",
+                "type": "button",
+                "content": "1️⃣ Minha internet parou ou está lenta",
+                "action": {
+                  "type": "goToNode",
+                  "nodeId": "internet_lenta"
+                }
+              },
+              {
+                "id": "choice2",
+                "type": "button",
+                "content": "2️⃣ Quero trocar a senha do Wi-Fi",
+                "action": {
+                  "type": "goToNode",
+                  "nodeId": "trocar_senha"
+                }
+              },
+              {
+                "id": "choice3",
+                "type": "button",
+                "content": "3️⃣ A internet cai toda hora",
+                "action": {
+                  "type": "goToNode",
+                  "nodeId": "internet_cai"
+                }
+              },
+              {
+                "id": "choice4",
+                "type": "button",
+                "content": "4️⃣ Meu modem está com luz vermelha",
+                "action": {
+                  "type": "goToNode",
+                  "nodeId": "luz_vermelha"
+                }
+              },
+              {
+                "id": "choice5",
+                "type": "button",
+                "content": "5️⃣ Falar com um técnico humano",
+                "action": {
+                  "type": "goToNode",
+                  "nodeId": "transferencia"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "internet_lenta",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Vamos tentar resolver rapidinho 🛠️\n\n1️⃣ Veja se os cabos estão bem conectados no modem\n2️⃣ Desligue e ligue o modem da tomada (aguarde 10 segundos)\n3️⃣ Espere 2 minutos e teste a internet\n\nSe ainda estiver com problema, digite: ",
+                    "bold": true
+                  },
+                  {
+                    "text": "Continuar",
+                    "bold": true,
+                    "italic": true
+                  },
+                  {
+                    "text": " ou digite ",
+                    "bold": true
+                  },
+                  {
+                    "text": "Menu",
+                    "bold": true,
+                    "italic": true
+                  },
+                  {
+                    "text": " para voltar ao início.",
+                    "bold": true
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "trocar_senha",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Siga esse passo pra trocar a senha do Wi-Fi:\n\n1. Conecte no Wi-Fi\n2. Abra o navegador e digite: ",
+                    "bold": true
+                  },
+                  {
+                    "text": "192.168.15.1\n",
+                    "bold": true,
+                    "color": "#007AFF"
+                  },
+                  {
+                    "text": "3. Usuário: admin | Senha: vivo12345 (ou veja a etiqueta do modem)\n4. Vá na aba Wi-Fi/Wireless e troque a senha\n\nDigite ",
+                    "bold": true
+                  },
+                  {
+                    "text": "Menu",
+                    "bold": true,
+                    "italic": true
+                  },
+                  {
+                    "text": " para voltar ao início.",
+                    "bold": true
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "internet_cai",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Isso pode acontecer por alguns motivos:\n\n- Tem muitas paredes entre o modem e os aparelhos?\n- O modem está num lugar baixo ou escondido?\n- Muitos aparelhos conectados?\n\nSe já verificou tudo e ainda cai, digite: ",
+                    "bold": true
+                  },
+                  {
+                    "text": "Preciso de ajuda",
+                    "bold": true,
+                    "italic": true
+                  },
+                  {
+                    "text": " ou ",
+                    "bold": true
+                  },
+                  {
+                    "text": "Menu",
+                    "bold": true,
+                    "italic": true
+                  },
+                  {
+                    "text": " para voltar ao início.",
+                    "bold": true
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "luz_vermelha",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Isso indica falha no sinal. Vamos ver:\n\n1. Verifique os cabos\n2. Desligue e ligue o modem (aguarde 10 segundos)\n3. Espere 2 minutos e veja se a luz fica verde\n\nSe continuar vermelha, digite: ",
+                    "bold": true
+                  },
+                  {
+                    "text": "Atendimento técnico",
+                    "bold": true,
+                    "italic": true
+                  },
+                  {
+                    "text": " ou ",
+                    "bold": true
+                  },
+                  {
+                    "text": "Menu",
+                    "bold": true,
+                    "italic": true
+                  },
+                  {
+                    "text": " para voltar ao início.",
+                    "bold": true
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "transferencia",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Vou te passar para um técnico da equipe! 👨‍🔧\nPor favor, mande uma mensagem explicando o que está acontecendo.",
+                    "bold": true
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
